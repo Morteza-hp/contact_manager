@@ -9,7 +9,7 @@ const Header = (): JSX.Element => {
         <div>
           <Link
             className="text-xl font-semibold transition-[color] duration-[0.32s] ease-[ease-in-out] hover:text-Green text-white"
-            href="/contact/"
+            href="/"
           >
             وب‌اپلیکیشن مدیریت مخاطبین
           </Link>
@@ -17,13 +17,13 @@ const Header = (): JSX.Element => {
         <div className="flex gap-5">
           <Link
             className="font-medium transition-[color] hidden sm:block duration-[0.32s] ease-[ease-in-out] hover:text-Green text-white"
-            href="/contact/add"
+            href="/add"
           >
             مخاطب جدید
           </Link>
           <Link
             className="font-medium transition-[color] duration-[0.32s] ease-[ease-in-out] text-white hover:text-Green hidden md:block"
-            href="/contact/"
+            href="/"
           >
             لیست مخاطبین
           </Link>

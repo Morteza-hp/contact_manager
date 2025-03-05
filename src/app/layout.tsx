@@ -3,7 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import QueryProvider from "./queries/QueryProvider";
-import Header from "./contact/components/Header";
+import Header from "./(contact)/components/Header";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {

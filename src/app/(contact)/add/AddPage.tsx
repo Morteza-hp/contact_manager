@@ -1,23 +1,18 @@
 "use client";
-
-import { useDetailContacts, useUpdateContacts } from "@/app/queries/contacts";
-import ContactForm from "../../components/ContactForm";
 import { Contact } from "@/app/models/contacts";
+import { useAddContacts } from "@/app/queries/contacts";
+import ContactForm from "../components/ContactForm";
+import { z } from "zod";
 import {
+  requiredString,
   requiredEmail,
   requiredNumber,
-  requiredString,
 } from "@/app/zod/option";
-import { z } from "zod";
 import toast from "react-hot-toast";
-import Loader from "../../components/Loader";
 import { useRouter } from "next/navigation";
 
-const EditPage = ({ id }: { id: string }) => {
-  const { data: contact, isPending } = useDetailContacts(id);
+const AddPage = () => {
   const router = useRouter();
-  const { mutateAsync: mutateUpdateContact, isPending: pendingUpdateContact } =
-    useUpdateContacts();
   const validationsSchema = z.object({
     name: requiredString(4, "نام"),
     lastName: requiredString(4, "نام خانوادگی"),
@@ -26,10 +21,12 @@ const EditPage = ({ id }: { id: string }) => {
     email: requiredEmail("ایمیل"),
     phoneNumber: requiredString(6, "شماره تلفن"),
   });
+
+  const { mutateAsync: addContact } = useAddContacts();
   const onSubmit = async (contact: Contact) => {
-    await mutateUpdateContact({ ...contact, id })
+    await addContact(contact)
       .then((order) => {
-        toast.success("مخاطب با موفقیت ویرایش شد.", {
+        toast.success("مخاطب با موفقیت ایجاد شد.", {
           icon: "🚀",
           style: {
             borderRadius: "4px",
@@ -38,10 +35,10 @@ const EditPage = ({ id }: { id: string }) => {
             color: "#fff",
           },
         });
-        router.push("/contact/");
+        router.push("/");
       })
       .catch((_errors) => {
-        toast.error("در ویرایش مخاطب مشکلی پیش آمده است.", {
+        toast.error("در ایجاد مخاطب مشکلی پیش آمده است.", {
           icon: "🤔",
           style: {
             borderRadius: "4px",
@@ -52,15 +49,13 @@ const EditPage = ({ id }: { id: string }) => {
         });
       });
   };
-  return isPending ? (
-    <Loader />
-  ) : (
+
+  return (
     <ContactForm
-      formMode="edit"
-      defaultValue={contact}
+      formMode="add"
       onSubmit={onSubmit}
       validationsSchema={validationsSchema}
     />
   );
 };
-export default EditPage;
+export default AddPage;

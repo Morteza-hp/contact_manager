@@ -24,7 +24,7 @@ export default function Home() {
         <div className="flex flex-col justify-center items-center gap-2 lg:hidden">
           <Link
             className="py-3 px-4 bg-Green font-semibold rounded-xl flex place-items-center sm:hidden hover:bg-green-500"
-            href="/contact/add"
+            href="/add"
           >
             مخاطب جدید
           </Link>
