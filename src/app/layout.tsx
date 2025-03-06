@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
-import QueryProvider from "./queries/QueryProvider";
 import Header from "./contact/components/Header";
 import { Toaster } from "react-hot-toast";
 
@@ -31,13 +30,9 @@ export default function RootLayout({
       className={`${vazirmatn.variable} font-vazirmatn`}
     >
       <body>
-        <QueryProvider>
-          <div>
-            <Toaster />
-            <Header />
-            <div className="flex">{children}</div>
-          </div>
-        </QueryProvider>
+        <Toaster />
+        <Header />
+        <div className="flex">{children}</div>
       </body>
     </html>
   );

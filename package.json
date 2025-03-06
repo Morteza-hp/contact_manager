@@ -3,16 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev --turbopack\" \"cd server && npm start\"",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
-    "@tanstack/react-query": "^5.28.8",
-    "@tanstack/react-query-devtools": "^5.28.8",
-    "axios": "^1.6.8",
     "next": "15.1.6",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -26,7 +23,6 @@
     "@types/node": "^20",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
-    "concurrently": "^8.2.2",
     "eslint": "^8",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",
