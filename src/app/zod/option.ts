@@ -32,7 +32,7 @@ export const requiredEmail = (fieldName: String) =>
     });
 
 export const SigninFormSchema = z.object({
-  name: requiredString(2, "نام"),
+  username: requiredString(2, "نام کاربری"),
   password: z
     .string()
     .min(8, { message: "رمز عبور باید حداقل ۸ کرکتر باشد" })
