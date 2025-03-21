@@ -14,17 +14,17 @@ const Card = ({ contact }: { contact: Contact }): JSX.Element => {
           <div className="col-span-3">
             <div className="grid grid-cols-2">
               <span className="text-white items-center">نام : </span>
-              <span className="text-white">{contact.name}</span>
+              <span className="text-white">{contact.first_name}</span>
             </div>
             <hr className="my-2 bg-black border-gray-500" />
             <div className="grid grid-cols-2">
               <span className="text-white">نام خانوادگی : </span>
-              <span className="text-white">{contact.lastName}</span>
+              <span className="text-white">{contact.last_name}</span>
             </div>
             <hr className="my-2 bg-black border-gray-500" />
             <div className="grid grid-cols-2">
               <span className="text-white">شماره تلفن : </span>
-              <span className="text-white">{contact.phoneNumber}</span>
+              <span className="text-white">{contact.phone_number}</span>
             </div>
             <hr className="my-2 bg-black border-gray-500" />
             <div className="grid grid-cols-2">
@@ -34,10 +34,10 @@ const Card = ({ contact }: { contact: Contact }): JSX.Element => {
           </div>
           <div className="col-span-1 self-center justify-self-center align-self">
             <Image
-              src={contact?.profilePicture}
+              src={contact?.picture}
               height={85}
               width={85}
-              alt={`آواتار ${contact.name}`}
+              alt={`آواتار ${contact.first_name}`}
               className="rounded-xl"
             />
           </div>

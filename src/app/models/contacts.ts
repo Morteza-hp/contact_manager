@@ -1,11 +1,19 @@
 export type Contact = {
-  id?: string;
-  name: String;
-  lastName: String;
-  email: String;
-  profilePicture?: any;
-  phoneNumber: String;
+  id?: number;
+  first_name: string;
+  last_name: string;
   age: number;
+  email: string;
+  phone_number: string;
+  picture?: any;
+};
+
+export type ContactsList = {
+  count: number;
+  next?: string;
+  previous?: string;
+  results: Contact[];
+  message?: string;
 };
 
 export type CommonFormProps<T> = {
@@ -20,6 +28,7 @@ export type CustomInputProps = {
   text: string;
   type: string;
   name: string;
+  defaultValue?: string | number;
 };
 
 export type FilterInputProps = {
@@ -32,4 +41,13 @@ export type FilterInputProps = {
 export type SidebarProps = {
   contacts: Contact[];
   setFilteredContacts: any;
+};
+
+export type ActionResponse = {
+  success: boolean;
+  message: string;
+  errors?: {
+    [K in keyof Contact]?: string[];
+  };
+  inputs?: Contact;
 };

@@ -1,12 +1,12 @@
 import { Metadata } from "next";
-import AddPage from "./AddPage";
+import ContactForm from "../components/ContactForm";
 
 export const metadata: Metadata = {
   title: "ایجاد",
 };
 
 const Add = () => {
-  return <AddPage />;
+  return <ContactForm formMode="add" />;
 };
 
 export default Add;

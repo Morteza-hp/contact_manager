@@ -1,6 +1,6 @@
 "use client";
 import { Contact } from "@/app/models/contacts";
-import { useAddContacts } from "@/app/queries/contacts";
+import { useCreateContact } from "@/app/queries/contacts";
 import ContactForm from "../components/ContactForm";
 import { z } from "zod";
 import {
@@ -22,7 +22,7 @@ const AddPage = () => {
     phoneNumber: requiredString(6, "شماره تلفن"),
   });
 
-  const { mutateAsync: addContact } = useAddContacts();
+  const { mutateAsync: addContact } = useCreateContact();
   const onSubmit = async (contact: Contact) => {
     await addContact(contact)
       .then((order) => {

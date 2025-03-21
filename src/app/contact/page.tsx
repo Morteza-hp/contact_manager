@@ -11,9 +11,7 @@ import { useGetContacts } from "../queries/contacts";
 export default async function Home() {
   const uxSkeletonArray: number[] = Array(9).fill(0);
   const contacts = await useGetContacts();
-  let data = await fetch("https://api.vercel.app/blog");
-  let posts = await data.json();
-  console.log("posts: ", posts);
+  console.log("contacts: ", contacts?.results);
   return (
     <>
       {/* <Sidebar contacts={contacts} /> */}
@@ -60,7 +58,7 @@ export default async function Home() {
                   <LoadingCard />
                 </Fragment>
               ))
-            : contacts?.map((contact: Contact, index: Key) => (
+            : contacts?.results?.map((contact: Contact, index: Key) => (
                 <Fragment key={index}>
                   <Card contact={contact} />
                 </Fragment>
@@ -70,3 +68,96 @@ export default async function Home() {
     </>
   );
 }
+
+// [
+//   {
+//       "id": 12,
+//       "first_name": "Georges",
+//       "last_name": "St-Pierre",
+//       "age": 43,
+//       "email": "",
+//       "phone_number": "09708892323",
+//       "picture": null
+//   },
+//   {
+//       "id": 11,
+//       "first_name": "Alex",
+//       "last_name": "Pereira",
+//       "age": 37,
+//       "email": "",
+//       "phone_number": "09211415676",
+//       "picture": null
+//   },
+//   {
+//       "id": 10,
+//       "first_name": "Tristan",
+//       "last_name": "Tate",
+//       "age": 34,
+//       "email": "",
+//       "phone_number": "09364887765",
+//       "picture": null
+//   },
+//   {
+//       "id": 9,
+//       "first_name": "Joe",
+//       "last_name": "Rogan",
+//       "age": 53,
+//       "email": "",
+//       "phone_number": "09557877712",
+//       "picture": null
+//   },
+//   {
+//       "id": 8,
+//       "first_name": "Lionel",
+//       "last_name": "Messi",
+//       "age": 37,
+//       "email": "",
+//       "phone_number": "09922324353",
+//       "picture": null
+//   },
+//   {
+//       "id": 7,
+//       "first_name": "Jordan",
+//       "last_name": "Peterson",
+//       "age": 60,
+//       "email": "",
+//       "phone_number": "09807784899",
+//       "picture": null
+//   },
+//   {
+//       "id": 6,
+//       "first_name": "David",
+//       "last_name": "Goggins",
+//       "age": 55,
+//       "email": "",
+//       "phone_number": "09224597622",
+//       "picture": null
+//   },
+//   {
+//       "id": 5,
+//       "first_name": "Andrew",
+//       "last_name": "Tate",
+//       "age": 35,
+//       "email": "Cobratate@gmail.com",
+//       "phone_number": "09113006002",
+//       "picture": null
+//   },
+//   {
+//       "id": 4,
+//       "first_name": "Elon",
+//       "last_name": "Musk",
+//       "age": 50,
+//       "email": "",
+//       "phone_number": "09122222222",
+//       "picture": null
+//   },
+//   {
+//       "id": 3,
+//       "first_name": "Donald",
+//       "last_name": "Trump",
+//       "age": 70,
+//       "email": "",
+//       "phone_number": "09121111111",
+//       "picture": null
+//   }
+// ]
